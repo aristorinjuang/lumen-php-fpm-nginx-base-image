@@ -16,8 +16,7 @@ RUN apk --no-cache add php8 php8-cli php8-fpm php8-mysqli php8-json php8-openssl
     php8-soap php8-pdo_mysql php8-tokenizer php8-fileinfo php8-simplexml php8-exif
 RUN ln -s /usr/bin/php8 /usr/bin/php
 
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
-    php composer.php --install-dir=/usr/local/bin --filename=composer --2 \
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer --2 \
     && rm -rf /tmp/* /var/tmp/* /usr/share/doc/* ~/.composer
 
 ENV SUPERCRONIC_URL="https://github.com/aptible/supercronic/releases/download/v0.1.12/supercronic-linux-amd64" \
