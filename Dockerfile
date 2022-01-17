@@ -1,6 +1,6 @@
 FROM alpine:3.15
 LABEL maintainer="Aristo Rinjuang <aristorinjuang@gmail.com>" \
-      description="Lightweight Pimcore, Lumen, or Laravel image with Nginx 1.18, PHP-FPM 7.4, Composer 1, and Supercronic (Cron) based on Alpine Linux."
+      description="Lightweight Pimcore, Lumen, or Laravel image with Nginx 1.18, PHP-FPM 7.4, Composer 2, and Supercronic (Cron) based on Alpine Linux."
 
 ENV TZ="Asia/Jakarta"
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
@@ -15,7 +15,7 @@ RUN apk --no-cache add php7 php7-cli php7-fpm php7-mysqli php7-json php7-openssl
     php7-mbstring php7-gd php7-redis php7-opcache php7-iconv php7-zip php7-xmlwriter php7-pdo \
     php7-soap php7-pdo_mysql php7-tokenizer php7-fileinfo php7-simplexml php7-exif
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer --1 \
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer --2 \
     && rm -rf /tmp/* /var/tmp/* /usr/share/doc/* ~/.composer
 
 ENV SUPERCRONIC_URL="https://github.com/aptible/supercronic/releases/download/v0.1.12/supercronic-linux-amd64" \
